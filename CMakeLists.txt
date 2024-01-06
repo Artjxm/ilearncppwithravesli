@@ -8,4 +8,6 @@ add_executable(ilearncppwithravesli main.cpp
         constants.h
         chapter5Task2.cpp
         chapter5Task2.h
+        chapter5Task1.cpp
+        chapter5Task1.h
 )
