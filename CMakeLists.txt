@@ -12,4 +12,6 @@ add_executable(ilearncppwithravesli main.cpp
         chapter5Task1.h
         chapter6Task1.cpp
         chapter6Task1.h
+        chapter6Task2.cpp
+        chapter6Task2.h
 )
