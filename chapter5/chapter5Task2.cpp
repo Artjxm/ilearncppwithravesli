@@ -54,6 +54,7 @@ bool keepPlaying() {
     return (choise == 'y');
 }
 
+// Hi-lo
 void chapter5Task2() {
     const int guesses = 7;
 
