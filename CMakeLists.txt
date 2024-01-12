@@ -20,4 +20,6 @@ add_executable(ilearncppwithravesli main.cpp
         chapter6/chapter6Task4.h
         chapter6/chapter6Task6.cpp
         chapter6/chapter6Task6.h
+        chapter7/calculatorUsingFunctionPointers.cpp
+        chapter7/calculatorUsingFunctionPointers.h
 )
