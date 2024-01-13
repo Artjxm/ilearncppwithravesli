@@ -1,3 +1,4 @@
+#include <sstream>
 
 #include "chapter5/chapter5Task1.h"
 #include "chapter5/chapter5Task2.h"
@@ -7,9 +8,10 @@
 #include "chapter6/chapter6Task4.h"
 #include "chapter6/chapter6Task6.h"
 #include "chapter7/calculatorUsingFunctionPointers.h"
+#include "chapter7/chapter7Task3binarySearch.h"
 
 void chapter5() {
-    // chapter5Task1();
+    chapter5Task1();
     chapter5Task2();
 }
 
@@ -22,7 +24,8 @@ void chapter6() {
 }
 
 void chapter7() {
-    calculatorUsingFunctionPointers();
+    // calculatorUsingFunctionPointers();
+    chapter7Task3binarySearch();
 }
 
 int main() {

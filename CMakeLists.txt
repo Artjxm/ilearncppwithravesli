@@ -22,4 +22,7 @@ add_executable(ilearncppwithravesli main.cpp
         chapter6/chapter6Task6.h
         chapter7/calculatorUsingFunctionPointers.cpp
         chapter7/calculatorUsingFunctionPointers.h
+        chapter7/chapter7Task1.h
+        chapter7/chapter7Task3binarySearch.cpp
+        chapter7/chapter7Task3binarySearch.h
 )

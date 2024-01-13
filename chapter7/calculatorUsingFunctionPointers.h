@@ -2,8 +2,8 @@
 #ifndef CALCULATORUSINGFUNCTIONPOINTERS_H
 #define CALCULATORUSINGFUNCTIONPOINTERS_H
 
-#include <iostream>;
-#include <array>;
+#include <iostream>
+#include <array>
 
 void calculatorUsingFunctionPointers();
 
