@@ -29,68 +29,10 @@ void chapter7() {
     chapter7Task3binarySearch();
 }
 
-struct Student {
-    std::string name;
-    int score;
-};
 
-// И обычные функции справляются вроде...
-bool less4(const Student &a, const Student &b) {
-    return a.score < b.score;
-}
 
 int main() {
-    std::array<Student, 8> arr{
-        {
-            { "Albert", 3 },
-            { "Ben", 5 },
-            { "Christine", 2 },
-            { "Dan", 8 }, // Dan имеет больше всего баллов (8)
-            { "Enchilada", 4 },
-            { "Francis", 1 },
-            { "Greg", 3 },
-            { "Hagrid", 5 }
-        }
-    };
 
-    // Первая версия
-    bool (*less)(const Student &, const Student &){
-        [](const Student &a, const Student &b) {
-            return (a.score < b.score);
-        }
-    };
-
-    // Вторая версия
-    std::function less2{
-        [](const Student &a, const Student &b) {
-            return (a.score < b.score);
-        }
-    };
-
-    // Третья версия
-    auto less3{
-        [](const Student &a, const Student &b) {
-            return (a.score < b.score);
-        }
-    };
-
-    // Вложенная лямбда
-    // const auto bestStudentIndex{
-    //     std::max_element(arr.begin(),
-    //                      arr.end(),
-    //                      [](const Student &a, const Student &b) {
-    //                          return (a.score < b.score);
-    //                      })
-    // };
-
-    // С применением одной из четырех* лямбда-переменных
-    const auto bestStudentIndex{
-        std::max_element(arr.begin(),
-                         arr.end(),
-                         less4)
-    };
-
-    std::cout << bestStudentIndex->name << " is the best student";
 
     return 0;
 }
