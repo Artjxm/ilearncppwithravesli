@@ -7,8 +7,6 @@
 #include "chapter6/chapter6Task6.h"
 #include "chapter7/calculatorUsingFunctionPointers.h"
 #include "chapter7/chapter7Task3binarySearch.h"
-#include <algorithm>
-#include <functional>
 
 void chapter5() {
     chapter5Task1();
@@ -28,29 +26,10 @@ void chapter7() {
     chapter7Task3binarySearch();
 }
 
-struct Season {
-    std::string_view name{};
-    double averageTemperature{};
-};
+
 
 int main() {
-    std::array<Season, 4> seasons{
-        {
-            { "Spring", 285.0 },
-            { "Summer", 296.0 },
-            { "Fall", 288.0 },
-            { "Winter", 263.0 }
-        }
-    };
 
-    std::sort(seasons.begin(), seasons.end(),
-              [](const auto &a, const auto &b) {
-                  return a.averageTemperature < b.averageTemperature;
-              });
-
-    for (const auto &season: seasons) {
-        std::cout << season.name << '\n';
-    }
 
     return 0;
 }
