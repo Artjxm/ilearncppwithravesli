@@ -10,6 +10,7 @@
 #include "chapter6/chapter6Task6.h"
 #include "chapter7/calculatorUsingFunctionPointers.h"
 #include "chapter7/chapter7Task3binarySearch.h"
+#include "chapter8/chapter8.h"
 
 #include "Timer.h"
 

@@ -28,4 +28,8 @@ add_executable(ilearncppwithravesli main.cpp
         headers.h
         Timer.cpp
         Timer.h
+        chapter8/Point.cpp
+        chapter8/Point.h
+        chapter8/chapter8.cpp
+        chapter8/chapter8.h
 )
