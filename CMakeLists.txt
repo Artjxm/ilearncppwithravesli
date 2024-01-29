@@ -25,4 +25,7 @@ add_executable(ilearncppwithravesli main.cpp
         chapter7/chapter7Task1.h
         chapter7/chapter7Task3binarySearch.cpp
         chapter7/chapter7Task3binarySearch.h
+        headers.h
+        Timer.cpp
+        Timer.h
 )
