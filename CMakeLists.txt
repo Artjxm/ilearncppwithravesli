@@ -38,4 +38,8 @@ add_executable(ilearncppwithravesli main.cpp
         chapter8/Monster.h
         chapter8/MonsterGenerator.cpp
         chapter8/MonsterGenerator.h
+        chapter8/Card.cpp
+        chapter8/Card.h
+        chapter8/Deck.cpp
+        chapter8/Deck.h
 )
