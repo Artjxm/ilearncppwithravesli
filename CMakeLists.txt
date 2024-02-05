@@ -46,4 +46,6 @@ add_executable(ilearncppwithravesli main.cpp
         chapter9/chapter9.h
         chapter9/Average.cpp
         chapter9/Average.h
+        chapter9/IntArray.cpp
+        chapter9/IntArray.h
 )

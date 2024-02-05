@@ -1,6 +1,7 @@
 #include "chapter9.h"
 #include <iostream>
 #include "Average.h"
+#include "IntArray.h"
 
 void chapter9Task2() {
     Average avg;
@@ -24,7 +25,32 @@ void chapter9Task2() {
     std::cout << copy << '\n';
 }
 
+IntArray fillArray()
+{
+    IntArray a(6);
+    a[0] = 6;
+    a[1] = 7;
+    a[2] = 3;
+    a[3] = 4;
+    a[4] = 5;
+    a[5] = 8;
+
+    return a;
+}
+
+void chapter9Task3() {
+    IntArray a = fillArray();
+    std::cout << a << '\n';
+
+    IntArray b(1);
+    a = a;
+    b = a;
+
+    std::cout << b << '\n';
+}
+
 
 void chapter9() {
-    chapter9Task2();
+    // chapter9Task2();
+    chapter9Task3();
 }
