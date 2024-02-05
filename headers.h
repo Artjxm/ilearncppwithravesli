@@ -11,6 +11,7 @@
 #include "chapter7/calculatorUsingFunctionPointers.h"
 #include "chapter7/chapter7Task3binarySearch.h"
 #include "chapter8/chapter8.h"
+#include "chapter9/chapter9.h"
 
 #include "Timer.h"
 

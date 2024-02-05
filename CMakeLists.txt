@@ -42,4 +42,8 @@ add_executable(ilearncppwithravesli main.cpp
         chapter8/Card.h
         chapter8/Deck.cpp
         chapter8/Deck.h
+        chapter9/chapter9.cpp
+        chapter9/chapter9.h
+        chapter9/Average.cpp
+        chapter9/Average.h
 )
