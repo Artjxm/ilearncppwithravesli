@@ -1,94 +1,54 @@
 #include "headers.h"
 
-class Doctor;
-
-class Patient {
+class Car {
     std::string m_name;
-    std::vector<Doctor *> m_doctor;
-
-    void addDoctor(Doctor *doc);
+    int m_id;
 
 public:
-    Patient(std::string name) : m_name(name) {}
+    Car(std::string name, int id) : m_name(name), m_id(id) {}
 
-    friend std::ostream &operator<<(std::ostream &out, const Patient &pat);
-
-    std::string getName() const { return m_name; }
-
-    friend class Doctor;
+    std::string getName() { return m_name; }
+    int getId() { return m_id; }
 };
 
-class Doctor {
-    std::string m_name;
-    std::vector<Patient *> m_patient;
+class Carlot {
+    static Car s_carLot[4];
 
 public:
-    Doctor(std::string name) : m_name(name) {}
+    Carlot() = delete;
 
-    void addPatient(Patient *pat) {
-        m_patient.push_back(pat);
+    static Car *getCar(int id) {
+        for (auto &count: s_carLot) if (count.getId() == id) return &count;
 
-        pat->addDoctor(this);
+        return nullptr;
     }
-
-    friend std::ostream &operator<<(std::ostream &out, const Doctor &doc) {
-        unsigned int length = doc.m_patient.size();
-        if (length == 0) {
-            out << doc.m_name << " has no patients right now";
-            return out;
-        }
-
-        out << doc.m_name << " is seeing patients: ";
-        for (unsigned int count = 0; count < length; ++count)
-            out << doc.m_patient[count]->getName() << ' ';
-        return out;
-    }
-
-    std::string getName() const { return m_name; }
 };
 
-void Patient::addDoctor(Doctor *doc) {
-    m_doctor.push_back(doc);
-}
+Car Carlot::s_carLot[4] = {
+    Car("Camry", 3),
+    Car("Honda", 4),
+    Car("Focus", 6),
+    Car("Mercedes", 3)
+};
 
-std::ostream &operator<<(std::ostream &out, const Patient &pat) {
-    unsigned int length = pat.m_doctor.size();
-    if (length == 0) {
-        out << pat.getName() << " has no doctors right now";
-        return out;
-    }
+class Driver {
+    std::string m_name;
+    int m_carId;
 
-    out << pat.m_name << " is seing doctors: ";
-    for (unsigned int count = 0; count < length; ++count)
-        out << pat.m_doctor[count]->getName() << ' ';
-    return out;
-}
+public:
+    Driver(std::string name, int carId) : m_name(name), m_carId(carId) {}
+
+    std::string getName() { return m_name; }
+    int getCarId() { return m_carId; }
+};
 
 int main() {
-    Patient *p1 = new Patient("Anton");
-    Patient *p2 = new Patient("Ivan");
-    Patient *p3 = new Patient("Derek");
+    Driver d("Oleg", 3);
 
-    Doctor *d1 = new Doctor("Tom");
-    Doctor *d2 = new Doctor("Bebr");
+    Car *car = Carlot::getCar(d.getCarId());
 
-    d1->addPatient(p1);
-
-    d2->addPatient(p1);
-    d2->addPatient(p3);
-
-    std::cout << *d1 << '\n';
-    std::cout << *d2 << '\n';
-    std::cout << *p1 << '\n';
-    std::cout << *p2 << '\n';
-    std::cout << *p3 << '\n';
-
-    delete p1;
-    delete p2;
-    delete p3;
-
-    delete d1;
-    delete d2;
+    if (car) std::cout <<  d.getName() << " is driving a " << car->getName() << '\n';
+    else std::cout <<  d.getName() << " couldn't find his car\n";
 
     return 0;
 }
