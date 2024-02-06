@@ -50,4 +50,6 @@ add_executable(ilearncppwithravesli main.cpp
         chapter9/IntArray.h
         chapter9/FixedPoint.cpp
         chapter9/FixedPoint.h
+        chapter10/lessons/Point2D.h
+        chapter10/lessons/Creature.h
 )
