@@ -52,4 +52,10 @@ add_executable(ilearncppwithravesli main.cpp
         chapter9/FixedPoint.h
         chapter10/lessons/Point2D.h
         chapter10/lessons/Creature.h
+        chapter11/Fruit.h
+        chapter11/Apple.h
+        chapter11/Banana.h
+        chapter11/chapter11.cpp
+        chapter11/chapter11.h
+        chapter11/GrannySmith.h
 )
