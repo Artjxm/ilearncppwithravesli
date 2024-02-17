@@ -1,0 +1,38 @@
+a)
+Parent()
+Child()
+~Child()
+~Parent()
+
+b)
+Parent()
+Child()
+Parent()
+~Parent()
+~Child()
+~Parent()
+
+c)
+Parent()
+Child()
+Child: 7
+~Child()
+~Parent()
+
+правильный ответ: не скомпилируется, т.к. m_x имеет закрытый тип доступа
+
+d)
+Parent()
+Child()
+Child: 7
+~Child()
+~Parent()
+
+e)
+Parent()
+Child()
+D2()
+Child: 7
+~D2()
+~Child()
+~Parent()
