@@ -64,4 +64,8 @@ add_executable(ilearncppwithravesli main.cpp
         chapter11/task3/Monster.h
         getRandNum.h
         URNG.h
+        chapter12/tasks/task2/Shape.h
+        chapter12/tasks/task2/Triangle.h
+        chapter12/tasks/task2/Point.h
+        chapter12/tasks/task2/Circle.h
 )
