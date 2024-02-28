@@ -1,30 +1,33 @@
 #include <iostream>
-#include "chapter12/tasks/task2/Circle.h"
-#include "chapter12/tasks/task2/Triangle.h"
-#include <vector>
 
-int getLargestRadius(const std::vector<Shape *> &v) {
-    int maxRadius(-1);
+template<class T, int size>
+class StaticArray {
+    T m_array[size];
 
-    for (const auto &element: v) {
-        auto *circle = dynamic_cast<Circle *>(element);
-        if (circle) if (circle->getRadius() > maxRadius) maxRadius = circle->getRadius();
-    }
+public:
+    T* getArray();
 
-    return maxRadius;
+    T& operator[](int index) { return m_array[index]; }
+};
+
+template<class T, int size>
+T* StaticArray<T, size>::getArray() {
+    return m_array;
 }
 
 int main() {
-    std::vector<Shape *> v;
-    v.push_back(new Circle(Point(1, 2, 3), 7));
-    v.push_back(new Triangle(Point(1, 2, 3), Point(4, 5, 6), Point(7, 8, 9)));
-    v.push_back(new Circle(Point(4, 5, 6), 3));
+    StaticArray<int, 10> intArr;
 
-    for (const auto &element: v) std::cout << *element << '\n';
+    for (int i = 0; i < 10; ++i) intArr[i] = i;
 
-    std::cout << "The largest radius is: " << getLargestRadius(v) << '\n'; // реализуйте эту функцию
+    for (int i = 9; i >= 0; --i) std::cout << intArr[i] << ' ';
+    std::cout << '\n';
 
-    for (const auto &element: v) delete element;
+    StaticArray<double, 5> doubleArr;
+
+    for (int i = 0; i < 5; ++i) doubleArr[i] = 5.5 + .1 * i;
+
+    for (int i = 0; i < 5; ++i) std::cout << doubleArr[i] << ' ';
 }
 
 /*
