@@ -1,16 +1,27 @@
 #ifndef PAIR_H
 #define PAIR_H
 
-template<class T, class T2>
+template<class T>
 class Pair {
-    T m_a;
-    T2 m_b;
+    T m_b;
 
 public:
-    Pair(const T& value1, const T& value2) : m_a(value1), m_b(value2) {}
+    explicit Pair(const T& value) : m_b(value) {}
 
-    T& first() { return m_a; }
-    T2& second() { return m_b; }
+    virtual T& second() { return m_b; }
+
+    virtual ~Pair() = default;
+};
+
+template<class T>
+class StringValuePair : public Pair<T> {
+    std::string m_string;
+
+public:
+    StringValuePair(const std::string& string, const T& value)
+        : Pair<T>(value), m_string(string) {}
+
+    std::string& first() { return m_string; }
 };
 
 
