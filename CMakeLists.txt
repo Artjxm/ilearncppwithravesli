@@ -69,4 +69,5 @@ add_executable(ilearncppwithravesli main.cpp
         chapter12/tasks/task2/Point.h
         chapter12/tasks/task2/Circle.h
         chapter13/Pair.h
+        chapter14/Fraction.h
 )
