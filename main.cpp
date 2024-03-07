@@ -1,58 +1,62 @@
 #include <iostream>
 
+#include "Timer.h"
+
 template<class T>
-class Auto_ptr3 {
-    T* m_ptr;
+class DynamicArray {
+    T* m_array;
+    int m_length;
 
 public:
-    // конструктор по умолчанию
-    Auto_ptr3(T* ptr = nullptr) : m_ptr(ptr) {}
-    ~Auto_ptr3() { delete m_ptr; }
+    DynamicArray(int length) : m_array(new T[length]), m_length(length) {}
 
-    // конструктор копирования
-    Auto_ptr3(const Auto_ptr3& a) = delete;
+    ~DynamicArray() { delete[] m_array; }
 
-    // конструктор перемещения
-    Auto_ptr3(Auto_ptr3&& rRef)  noexcept : m_ptr(rRef.m_ptr) {
-        rRef.m_ptr = nullptr;
+    DynamicArray(const DynamicArray& arr) = delete;
+
+    DynamicArray& operator=(const DynamicArray& arr) = delete;
+
+    DynamicArray(DynamicArray&& arr)  noexcept : m_array(arr.m_array), m_length(arr.getLength()) {
+        arr.m_length = 0;
+        arr.m_array = nullptr;
     }
 
-    // перегрузка оператора присвоения копированием, который выполняет глубокое копирование
-    Auto_ptr3& operator=(const Auto_ptr3& a) = delete;
+    DynamicArray& operator=(DynamicArray&& arr)  noexcept {
+        if (&arr == this) return *this;
 
-    // перегрузка оператора присвоения перемещением, который передает право собственности
-    // на rRef.m_ptr в m_ptr
-    Auto_ptr3& operator=(Auto_ptr3&& rRef) noexcept {
-        if (&rRef == this)
-            return *this;
+        delete[] m_array;
 
-        delete m_ptr;
+        m_length = arr.getLength();
+        m_array = arr.m_array;
 
-        m_ptr = rRef.m_ptr;
-        rRef.m_ptr = nullptr;
+        arr.m_length = 0;
+        arr.m_array = nullptr;
 
         return *this;
     }
 
-    T& operator*() { return *m_ptr; }
-    T* operator->() { return m_ptr; }
-    bool isNull() const { return m_ptr == nullptr; }
+    int getLength() const { return m_length; }
+    T& operator[](int index) { return m_array[index]; }
+    const T& operator[](int index) const { return m_array[index]; }
 };
 
-class Item {
-public:
-    Item() { std::cout << "Item acquired\n"; }
-    ~Item() { std::cout << "Item destroyed\n"; }
-};
+DynamicArray<int> cloneArrayAndDouble(const DynamicArray<int>& arr) {
+    DynamicArray<int> dbl(arr.getLength());
+    for (int i(0); i < arr.getLength(); ++i) dbl[i] = arr[i] * 2;
 
-Auto_ptr3<Item> generateItem() {
-    Auto_ptr3<Item> item(new Item);
-    return item;
+    return dbl;
 }
 
 int main() {
-    Auto_ptr3<Item> mainItem;
-    mainItem = generateItem();
+    Timer t;
+
+    DynamicArray<int> arr(100'000);
+
+    for (int i = 0; i < arr.getLength(); i++) arr[i] = i;
+
+    arr = cloneArrayAndDouble(arr);
+
+    std::cout << t.elapsed();
 
     return 0;
 }
